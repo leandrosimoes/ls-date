@@ -37,6 +37,22 @@
         return ls_date.getAllHolydaysOfTheYear({ date: this, state: state });
     });
 
+    addPrototypeFunctionIfNotExist('lastDayOfMonth', function () {
+        return ls_date.lastDayOfMonth(this);
+    });
+
+    addPrototypeFunctionIfNotExist('toFormatString', function (format) {
+        return ls_date.toFormatString(this, format);
+    });
+
+    addPrototypeFunctionIfNotExist('startOfDay', function () {
+        return ls_date.startOfDay(this);
+    });
+
+    addPrototypeFunctionIfNotExist('endOfDay', function () {
+        return ls_date.endOfDay(this);
+    });
+
     // Algorithm Source: http://www.inf.ufrgs.br/~cabral/Pascoa.html
     function getEasterDate(currentDate) {
         var currentYear = currentDate.getFullYear();
@@ -432,6 +448,70 @@
             if (!date || !(date instanceof Date)) throw 'The date parameter must be a valid date. (Ex: ' + new Date().toString() + ')';
 
             return initHolydays(date, state);
+        },
+        toFormatString: function (date, format) {
+            if (!date || !(date instanceof Date)) throw 'The date parameter must be a valid date. (Ex: ' + new Date().toString() + ')';
+
+            if (!format) return date.toString();
+
+            var d = date.getDate(),
+                dd = d < 10 ? '0' + d : '' + d,
+                M = date.getMonth() + 1,
+                MM = M < 10 ? '0' + M : '' + M,
+                yyyy = date.getFullYear() + '',
+                hour = date.getHours(),
+                h = (hour > 12 ? hour - 12 : hour),
+                hh = h < 10 ? '0' + h : '' + h,
+                H = hour,
+                HH = H < 10 ? '0' + H : '' + H,
+                m = date.getMinutes(),
+                mm = m < 10 ? '0' + m : '' + m,
+                s = date.getSeconds(),
+                ss = s < 10 ? '0' + s : '' + s;
+
+            var output = format;
+
+            output = output.replace(new RegExp(/dd/, 'g'), dd);
+            output = output.replace(new RegExp(/d/, 'g'), d);
+            output = output.replace(new RegExp(/MM/, 'g'), MM);
+            output = output.replace(new RegExp(/M/, 'g'), M);
+            output = output.replace(new RegExp(/YYYY/, 'g'), yyyy);
+            output = output.replace(new RegExp(/YYY/, 'g'), yyyy);
+            output = output.replace(new RegExp(/YY/, 'g'), yyyy.substr(yyyy.length - 2));
+            output = output.replace(new RegExp(/yyyy/, 'g'), yyyy);
+            output = output.replace(new RegExp(/yyy/, 'g'), yyyy);
+            output = output.replace(new RegExp(/yy/, 'g'), yyyy.substr(yyyy.length - 2));
+            output = output.replace(new RegExp(/HH/, 'g'), HH);
+            output = output.replace(new RegExp(/H/, 'g'), H);
+            output = output.replace(new RegExp(/hh/, 'g'), hh);
+            output = output.replace(new RegExp(/h/, 'g'), h);
+            output = output.replace(new RegExp(/mm/, 'g'), mm);
+            output = output.replace(new RegExp(/m/, 'g'), m);
+            output = output.replace(new RegExp(/ss/, 'g'), ss);
+            output = output.replace(new RegExp(/s/, 'g'), s);
+
+            return output;
+        },
+        startOfDay: function (date) {
+            date = date || new Date();
+
+            if (!date || !(date instanceof Date)) throw 'The date parameter must be a valid date. (Ex: ' + new Date().toString() + ')';
+
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+        },
+        endOfDay: function (date) {
+            date = date || new Date();
+
+            if (!date || !(date instanceof Date)) throw 'The date parameter must be a valid date. (Ex: ' + new Date().toString() + ')';
+
+            return new Date(date.getFullYear(), date.getMonth(), date.getDate(), 23, 59, 59);
+        },
+        lastDayOfMonth: function (date) {
+            date = date || new Date();
+
+            if (!date || !(date instanceof Date)) throw 'The date parameter must be a valid date. (Ex: ' + new Date().toString() + ')';
+
+            return new Date(date.getFullYear(), date.getMonth() + 1, 1).addDays(-1);
         }
     };
 
