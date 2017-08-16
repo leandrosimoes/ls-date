@@ -176,7 +176,7 @@
                 { name: 'Dia da Independência do Brasil', date: new Date(currentDate.getFullYear(), ls_date.months.september, 7) },
                 { name: 'Dia de Nossa Sra. Aparecida', date: new Date(currentDate.getFullYear(), ls_date.months.october, 12) },
                 { name: 'Dia de Finados', date: new Date(currentDate.getFullYear(), ls_date.months.november, 2) },
-                { name: 'Dia da Proclamação da República', date: new Date(currentDate.getFullYear(), ls_date.months.november, 17) },
+                { name: 'Dia da Proclamação da República', date: new Date(currentDate.getFullYear(), ls_date.months.november, 15) },
                 { name: 'Natal', date: new Date(currentDate.getFullYear(), ls_date.months.december, 25) }
             ]
         },
@@ -218,14 +218,14 @@
                     ];
                 case 'DF':
                     return [
-                        { name: 'Dia da Fundação de Brasília', date: new Date(currentDate.getFullYear(), ls_date.months.abril, 21) },
+                        { name: 'Dia da Fundação de Brasília', date: new Date(currentDate.getFullYear(), ls_date.months.april, 21) },
                         { name: 'Dia do Evangélico', date: new Date(currentDate.getFullYear(), ls_date.months.november, 30) },
                     ];
                 case 'ES': return [];
                 case 'GO': return [];
                 case 'MA':
                     return [
-                        { name: 'Dia da Adesão do Maranhão à Independencia do Brasil', date: new Date(currentDate.getFullYear(), ls_date.months.july, 28) },
+                        { name: 'Dia da Adesão do Maranhão à Independência do Brasil', date: new Date(currentDate.getFullYear(), ls_date.months.july, 28) },
                     ];
                 case 'MT':
                     return [
@@ -237,7 +237,7 @@
                     ];
                 case 'MG':
                     return [
-                        { name: 'Dia de Magna do Estado', date: new Date(currentDate.getFullYear(), ls_date.months.abril, 21) },
+                        { name: 'Dia de Magna do Estado', date: new Date(currentDate.getFullYear(), ls_date.months.april, 21) },
                     ];
                 case 'PA':
                     return [
@@ -259,7 +259,7 @@
                     ];
                 case 'RJ':
                     return [
-                        { name: 'Dia de São Jorge', date: new Date(currentDate.getFullYear(), ls_date.months.abril, 23) },
+                        { name: 'Dia de São Jorge', date: new Date(currentDate.getFullYear(), ls_date.months.april, 23) },
                         { name: 'Dia da Consciência Negra', date: new Date(currentDate.getFullYear(), ls_date.months.november, 20) },
                     ];
                 case 'RN':
